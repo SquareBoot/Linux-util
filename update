@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get upgrade
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+/home/marco/e/clean

@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo apt-get install lib32z1 lib32ncurses5

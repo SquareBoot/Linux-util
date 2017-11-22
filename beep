@@ -1,0 +1,2 @@
+#!/bin/bash
+( speaker-test -t sine -f 900 )& pid=$! ; sleep 0.9s ; kill -9 $pid

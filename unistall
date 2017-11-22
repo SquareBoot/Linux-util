@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo apt-get purge $1
+/home/marco/e/clean
