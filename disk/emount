@@ -1,2 +1,0 @@
-#!/bin/bash
-udisksctl mount -b $1 > /dev/null

@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "Checking VirtualBox compatibility..."
+if [ -z $"$(egrep '(vmx|svm)' /proc/cpuinfo)" ]; then
+  echo "Installing..."
+  sudo apt-get install virtualbox virtualbox-ext-pack
+  echo "Adding " $USER "to the VBox group (needed for device virtualization)..."
+  sudo adduser $USER vboxusers
+  echo "Done.";
+else
+  echo "Incompatibility issues found!";
+fi

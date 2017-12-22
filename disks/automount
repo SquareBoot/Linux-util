@@ -1,0 +1,2 @@
+#!/bin/bash
+cat disks | xargs -L1 sh $(dirname "$0")/mount

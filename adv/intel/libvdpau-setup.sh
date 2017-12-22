@@ -9,21 +9,17 @@ if [ "$CONT" = "y" ]; then
   sudo echo "#!/bin/sh" > /etc/profile.d/vdpau_vaapi.sh
   sudo echo "export VDPAU_DRIVER=va_gl " >> /etc/profile.d/vdpau_vaapi.sh
   sudo chmod +x /etc/profile.d/vdpau_vaapi.sh
-  clear
-  echo "Your system is going to be rebooted."
-  echo "Then, run the following script in a shell:"
-  echo "./libvdpau-config.sh"
-  echo "Rebooting after confirmation..."
+  echo "Your system will be rebooted."
+  echo "Then, run the following script:"
+  echo "libvdpau-config.sh"
   read -p "Continue (y/n)?" CONT
   if [ "$CONT" = "y" ]; then
-    echo "Remember to run the config script!"
-    sudo reboot;
+    sudo reboot
   else
-    echo "Error: reboot your system";
+    echo "Please, reboot your system and run the libvdpau-config.sh script"
   fi
-  echo "Exit";
   
 else
-  echo "Exit";
+  echo "Cancelled."
 fi
 

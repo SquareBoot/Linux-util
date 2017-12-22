@@ -1,4 +1,0 @@
-#!/bin/bash
-cd /home/marco/e/disk/
-ls
-cat disks | xargs -L1 ./emount

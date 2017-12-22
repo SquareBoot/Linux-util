@@ -1,9 +1,7 @@
 #!/bin/bash
 read -p "Continue (y/n)?" CONT
 if [ "$CONT" = "y" ]; then
-  echo "Yep"
-  echo "YES";
+  echo "Yes"
 else
   echo "No"
-  echo "NOPE";
 fi
