@@ -1,0 +1,7 @@
+#!/bin/bash
+sh $(dirname "$0")/../pip
+sh $(dirname "$0")/../astropy
+sh $(dirname "$0")/../numpy-scipy
+sh $(dirname "$0")/../OpenCV
+sh $(dirname "$0")/../PIL
+sh $(dirname "$0")/../PyQt4
