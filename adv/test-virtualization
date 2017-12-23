@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Checking virtualization compatibility..."
+if [ -z $"$(egrep '(vmx|svm)' /proc/cpuinfo)" ]; then
+  echo "Compatible."
+else
+  echo "Incompatibility issues found!"
+fi

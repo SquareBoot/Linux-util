@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Starting the INDI Web Manager..."
+echo "Localhost IP: " $"$(hostname --ip-address)"
+echo "Current IP:" $"$(sh $(dirname "$0")/../ip)"
+echo "Default port: 8624"
+indi-web -v
