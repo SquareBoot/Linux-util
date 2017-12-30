@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "Fixing KDE Plasma sudo dialog (ksmserver)..."
+killall ksmserver
+rm ~/.config/ksmserverrc
+echo "Your computer must be rebooted."
+read -p "Continue (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+  reboot
+else
+  echo "Please reboot."
+fi
