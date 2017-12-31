@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install sh
+pip install --user sh
