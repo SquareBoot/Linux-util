@@ -1,2 +1,8 @@
 #!/bin/bash
 sudo apt-get install python-imaging
+echo "Done."
+echo "A PIL test can be run."
+read -p "Continue (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    python2 $(dirname "$0")/tests/PythonImagingLibrary.py
+fi

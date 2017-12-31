@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install astropy
+pip install --user astropy
