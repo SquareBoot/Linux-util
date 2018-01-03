@@ -1,0 +1,58 @@
+#!/bin/bash
+echo "Checking installation folder..."
+instdir=$2
+if [ -z $instdir ]; then
+    if [ -d "/lib/plymouth/themes/" ]
+        then
+            echo "Detected an old version of the plymouth installation directory."
+            instdir="/lib/plymouth/themes/"
+    else
+        echo "You are using a new plymouth version. Please check if your theme's .plymouth file uses /usr/share/plymouth/themes/ instead of /lib/plymouth/themes/"
+        read -p "Continue (y/n)? " CONT
+        if [ "$CONT" = "y" ]
+            then
+                instdir="/usr/share/plymouth/themes/"
+        else
+            exit 3
+        fi
+    fi
+fi
+echo "Installing in " $instdir
+
+echo "Checking theme..."
+src=$1
+if [ -z $src ]
+    then
+        read -e -p "Please specify the source directory of your theme: " src
+fi
+echo "Installing theme from " $src
+
+echo "Looking for the .plymouth file..."
+plymouth=$"$(find $src -type f -name "*.plymouth" | tail -n 1)"
+if [ -z $plymouth ]; then
+    echo ".plymouth file not found. Aborting..."
+    exit 4
+fi
+echo $plymouth " found."
+
+read -p "Continue (y/n)?" CONT
+if [ "$CONT" = "y" ]
+    then
+        echo "Copying the files..."
+        sudo cp -r "$src" "$instdir"
+        echo "Registering theme..."
+        sudo update-alternatives --install "$instdir/default.plymouth" default.plymouth "$instdir/$(basename "$src")/$plymouth" 100
+        echo "Now select the " $(basename "$src") " theme from the list:"
+        sudo update-alternatives --config default.plymouth
+        sudo update-initramfs -u
+        echo "Done."
+        
+        echo "Now you can try the new theme."
+        read -p "Reboot the computer (y/n)?" CONT
+        if [ "$CONT" = "y" ]
+            then
+                sudo reboot
+        fi
+else
+    exit 5
+fi
