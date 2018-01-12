@@ -1,0 +1,72 @@
+#!/bin/bash
+echo "Installing dependencies..."
+sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-numpy python-dev libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff5-dev libdc1394-22-dev
+
+read -p "Do you want to install some extra packages? (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    sudo apt-get install python-pip libatlas-base-dev gfortran
+    pip install --user numpy pandas
+fi
+
+echo "Preparing..."
+if [ -d "build" ]; then
+    echo "Build directory found."
+    read -p "Remove it (y/n)?" CONT
+    if [ "$CONT" = "y" ]; then
+        rm -r build
+    fi
+fi
+mkdir build
+cd build
+
+echo "Which packages to you want to install?"
+echo "1. Python and C++ examples (needed to test OpenCV)"
+echo "2. Extras (MUST be in $(readlink -f ../..)/opencv_contrib)"
+echo "3. Every package"
+echo
+read -p "Please select an option: " option
+
+if [ "$option" == "1" ]; then
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON ..
+    
+elif [ "$option" == "2" ]; then
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules
+    
+else
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -D BUILD_EXAMPLES=ON ..
+fi
+
+
+echo "============="
+
+echo "Building..."
+
+read -p "Do you want to build OpenCV using $(nproc) jobs (faster) instead of one? (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    make -j$(nproc)
+    
+else
+    make
+fi
+
+echo "Installing..."
+sudo make install
+read -p "Do you want to install \"python-opencv\"? (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    sudo apt-get install python-opencv
+fi
+
+echo "Binding libraries..."
+sudo ldconfig
+
+echo "============="
+
+d=$(basename $(pwd))
+cd ..
+read -p "Remove the building directory ($d)? (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    rm -r $d
+fi
+
+echo "============="
+echo "Done."

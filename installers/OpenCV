@@ -1,0 +1,31 @@
+#!/bin/bash
+d=$1
+if [ -z $d ]; then
+    read -e -p "Please specify an directory where download and build OpenCV (leave empty for current): " d
+fi
+if [ -z $d ]; then
+    echo "Working in: " $(pwd)
+else 
+    cd $d
+    echo "Working in: " $d
+fi
+echo "============="
+
+sh $(dirname "$0")/partial/download-OpenCV
+sh $(dirname "$0")/partial/istall-OpenCV
+
+echo "Checking version... "
+if [ -z "$(pkg-config --modversion opencv 2> /dev/null)" ]; then
+    echo "OpenCV not found. Aborting."
+    exit 3
+else 
+    echo "OK."      
+fi
+
+echo "============="
+
+echo "OpenCV should be checked with some examples."
+read -p "Continue (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    sh $(dirname "$0")/tests/OpenCV/run
+fi

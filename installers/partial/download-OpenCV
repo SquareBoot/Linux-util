@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Downloading OpenCV 3.4.0..."
+wget --output-document "OpenCV-3.4.0-source.zip" "https://github.com/opencv/opencv/archive/3.4.0.zip"
+wget --output-document "OpenCV-3.4.0-contrib.zip" "https://codeload.github.com/opencv/opencv_contrib/zip/3.4.0"
+unzip "OpenCV-3.4.0-source.zip"
+unzip "OpenCV-3.4.0-contrib.zip"
+mv "opencv_contrib-3.4.0" "opencv_contrib"
+read -p "Remove zip archives? (y/n)?" CONT
+if [ "$CONT" = "y" ]; then
+    rm "OpenCV-3.4.0-source.zip"
+    rm "OpenCV-3.4.0-contrib.zip"
+fi
+cd "opencv-3.4.0"
+echo "============="

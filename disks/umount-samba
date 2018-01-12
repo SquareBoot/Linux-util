@@ -1,0 +1,6 @@
+#!/bin/bash
+folder=$1
+if [ -z $folder ]; then
+    read -e -p "Please specify the mount point: " folder
+fi
+sudo umount -a -t cifs -l "$folder"

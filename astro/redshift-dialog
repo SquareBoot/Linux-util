@@ -1,7 +1,5 @@
 #!/bin/bash
-arg=$(zenity --scale --min-value=1000 --value=1500 --max-value=25000 --step=100 --text="Please, select the color temperature in Kelvin:" 2> /dev/null)
-echo "Selected value: " $arg
-if [ ! -z $arg ]
-    then
-        redshift -O $arg
+temp=$(zenity --scale --min-value=1000 --value=1500 --max-value=25000 --step=100 --text="Please, select the color temperature in Kelvin:" 2> /dev/null)
+if [ ! -z $temp ]; then
+        redshift -O $temp
 fi

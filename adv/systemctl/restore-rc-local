@@ -1,0 +1,9 @@
+#!/bin/bash
+sudo systemctl status rc-local
+sudo systemctl enable rc-local
+sudo cp "$(dirname "$0")/rc-local.service-template" /etc/systemd/system/rc-local.service
+sudo cp "$(dirname "$0")/rc.local-template" /etc/rc.local
+sudo chmod +x /etc/rc.local
+sudo systemctl enable rc-local
+sudo systemctl start rc-local.service
+sudo systemctl status rc-local.service

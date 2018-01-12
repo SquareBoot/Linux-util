@@ -1,0 +1,6 @@
+#!/bin/bash
+disk=$1
+echo "Unmounting $disk..."
+udisksctl unmount -b "$disk"
+echo "Turning off disk..."
+udisksctl power-off -b "$(printf '%s\n' "${disk//[[:digit:]]/}")"

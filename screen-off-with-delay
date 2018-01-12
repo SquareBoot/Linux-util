@@ -1,3 +1,7 @@
 #!/bin/bash
-sleep 0.7
+delay=$1
+if [ -z $delay ]; then
+    delay=0.7
+fi
+sleep $delay
 xset dpms force off

@@ -1,3 +1,22 @@
 #!/bin/bash
-sudo apt-get install python-numpy python-scipy python-pip
-pip install --user numpy scipy
+option=$1
+if [ -z option ]; then
+    echo "How do you want to install numpy and scipy?"
+    echo "1. System package manager"
+    echo "2. pip"
+    echo "3. Both"
+    echo
+    read -p "Please select an option: " option
+fi
+
+if [ "$option" == "1" ]; then
+    sudo apt-get install python-numpy python-scipy
+    
+elif [ "$option" == "2" ]; then
+    sudo apt-get install python-pip
+    pip install --user numpy scipy
+    
+else
+    sudo apt-get install python-pip python-numpy python-scipy
+    pip install --user numpy scipy
+fi

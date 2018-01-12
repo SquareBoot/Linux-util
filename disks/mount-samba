@@ -1,0 +1,17 @@
+#!/bin/bash
+server=$1
+if [ -z $server ]; then
+    read -e -p "Please specify an remote SAMBA folder (e.g.: \"computer/folder\" or \"ip/folder\"): " server
+fi
+
+folder=$2
+if [ -z $folder ]; then
+    read -e -p "Please specify the mount point: " folder
+fi
+
+user=$3
+if [ -z $user ]; then
+    read -e -p "Please specify the username (leave empty to use \"$USER\"): " user
+fi
+
+sudo mount -t cifs -o username=$user,dir_mode=777,file_mode=777 "//$server" "$folder"

@@ -1,2 +1,0 @@
-#!/bin/bash
-cp /home/marco/.config/kstarsrc ./last-config

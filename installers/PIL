@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install python-imaging
+sudo apt-get install python-imaging python-pil
 echo "Done."
 echo "A PIL test can be run."
 read -p "Continue (y/n)?" CONT
