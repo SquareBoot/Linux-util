@@ -1,6 +1,6 @@
 #!/bin/bash
 option=$1
-if [ -z option ]; then
+if [ -z "$option" ]; then
     echo "How do you want to install numpy and scipy?"
     echo "1. System package manager"
     echo "2. pip"

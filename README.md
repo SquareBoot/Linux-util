@@ -1,2 +1,94 @@
-# My Linux (Ubuntu) scripts
-No description needed
+# My Ubuntu / Debian scripts
+No description needed. This is a good collection of scrits for everyone who has just started using Ubuntu or simply wants some already-made utilities and installation scripts, like the OpenCV installer or the KStars / INDI installation helper. It also offers some scripts to test the installed packages, to fix some troubles with dpkg or the DE, and even some utilities for those who like astronomy... Use them all!
+
+## Index of scripts
+
+- pip-update
+- adv
+	- remove-apt-key
+	- systemctl
+		- restore-rc-local
+	- fix-dpkg
+	- intel
+		- libvdpau-setup
+		- libvdpau-config
+		- intel-cpu-microcode
+	- clear-bash-history
+	- clear-swap
+	- test-virtualization
+	- refresh-fonts
+	- install-plymouth-theme
+	- get-java-home
+	- get-cores-count
+	- fix-kde-sudo
+- inst
+- update
+- net
+	- network-scan
+	- ip
+- screen-off-with-delay
+- disks
+	- unmount
+	- to-mount
+	- automount
+	- mount-samba
+	- list
+	- power-off
+	- mount
+	- umount-samba
+- suspend
+- remove
+- screen-off
+- processes
+	- autokill
+- beep
+- installers
+	- Stellarium
+	- VirtualBox
+	- GitCola
+	- astropy
+	- PIL
+	- OpenCV
+	- qtconfig
+	- nmap
+	- Flash
+	- python-sh
+	- partial
+		- install-OpenCV
+		- lxnstack-dependencies
+		- udoo-compiler-64bit
+		- download-OpenCV
+		- android-compiler-64bit
+	- Spotify
+	- pip
+	- WineHQ
+	- tests
+		- OpenCV
+			- run
+		- PythonImagingLibrary.py
+	- PyQt4
+	- GNOME-item-editor
+	- local-domain-avahi
+	- Chromium
+	- Luminance-HDR
+	- Kdenlive
+	- numpy-scipy
+	- Samba
+	- KStars-indi
+	- gnome-keyring
+	- OpenVPN-GNOME-client
+	- phd2
+	- Java8
+	- ssh
+	- Brackets
+	- Java9
+- clear
+- astro
+	- redshift-set
+	- indi-web
+	- redshift-dialog
+	- redshift-reset
+	- indi-backup
+		- bck
+		- restore-bck
+- pip-inst

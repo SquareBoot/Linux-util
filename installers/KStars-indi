@@ -3,7 +3,7 @@ sudo apt-add-repository ppa:mutlaqja/ppa
 sudo apt-get update
 
 option=$1
-if [ -z option ]; then
+if [ -z "$option" ]; then
     echo "Which packages do you want to install?"
     echo "1. INDI full + INDI Web Manager"
     echo "2. KStars + INDI full"

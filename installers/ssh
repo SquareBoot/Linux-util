@@ -1,6 +1,6 @@
 #!/bin/bash
 option=$1
-if [ -z option ]; then
+if [ -z "$option" ]; then
     echo "Which packages do you want to install?"
     echo "1. Client"
     echo "2. Server"
