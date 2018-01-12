@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ -a /var/lib/dpkg/lock ]; then
+    echo "Another instance of dpkg or apt is running."
+    echo "Wait for it to stop, run \"killall dpkg\", reboot the computer or remove \"/var/lib/dpkg/lock\" manually."
+    
+else
+    echo "Lock not set."
+    sh $(dirname "$0")/../clear
+    sudo dpkg --configure -a
+    sudo apt-get dist-upgrade --fix-missing
+    sudo apt-get dist-upgrade --fix-broken
+    echo "Done."
+    echo "To fix a particular package, run \"sudo apt-get install -f <package>\""
+fi
