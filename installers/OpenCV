@@ -1,7 +1,7 @@
 #!/bin/bash
 d=$1
 if [ -z $d ]; then
-    read -e -p "Please specify an directory where download and build OpenCV (leave empty for current): " d
+    read -e -p "Please specify the directory where download and build OpenCV (leave empty to use $\"(pwd)\"): " d
 fi
 if [ -z $d ]; then
     echo "Working in: " $(pwd)
@@ -24,7 +24,7 @@ fi
 
 echo "============="
 
-echo "OpenCV should be checked with some examples."
+echo "OpenCV installation should be checked with some examples."
 read -p "Continue (y/n)?" CONT
 if [ "$CONT" = "y" ]; then
     sh $(dirname "$0")/tests/OpenCV/run
