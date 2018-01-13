@@ -21,6 +21,8 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- get-java-home
 	- get-cores-count
 	- fix-kde-sudo
+- gui
+	- apply-GTK-theme-QT5
 - inst
 - update
 - net
@@ -37,25 +39,28 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- mount
 	- umount-samba
 - suspend
+- tree
 - remove
 - screen-off
 - processes
 	- autokill
+	- to-kill
 - beep
 - installers
 	- Stellarium
+	- tio-serial-terminal
 	- VirtualBox
 	- GitCola
 	- astropy
 	- PIL
 	- OpenCV
-	- qtconfig
 	- nmap
 	- Flash
 	- python-sh
 	- partial
 		- install-OpenCV
 		- lxnstack-dependencies
+		- libindi-compiler
 		- udoo-compiler-64bit
 		- download-OpenCV
 		- android-compiler-64bit
