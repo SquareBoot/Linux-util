@@ -1,9 +1,15 @@
 #!/bin/bash
 echo "Installing the QT5 theme engine..."
 sudo apt-get install qt5-style-plugins
+
 echo "Applying the theme globally..."
 export QT_QPA_PLATFORMTHEME=gtk2
 echo >> $HOME/.bashrc
 echo "# The following command applies the global GTK theme to QT5 applications." >> $HOME/.bashrc
 echo "export QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.bashrc
+
+echo >> $HOME/.profile
+echo "# The following command applies the global GTK theme to QT5 applications." >> $HOME/.profile
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
+
 echo "Done. Restart your applications to apply the theme."

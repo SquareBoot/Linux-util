@@ -2,10 +2,15 @@
 echo "Checking VirtualBox compatibility..."
 if [ -z "$(egrep '(vmx|svm)' /proc/cpuinfo)" ]; then
   echo "Incompatibility issues found!"
+  
 else
   echo "Installing..."
-  sudo apt-get install virtualbox virtualbox-ext-pack
+  sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+  wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+  sudo apt-get update
+  sudo apt-get install virtualbox-5.2 dkms
   echo "Adding " $USER "to the VBox group (needed for device virtualization)..."
   sudo adduser $USER vboxusers
+  echo "Please install the extension pack manually."
   echo "Done."
 fi

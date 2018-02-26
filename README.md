@@ -2,7 +2,6 @@
 No description needed. This is a good collection of scrits for everyone who has just started using Ubuntu or simply wants some already-made utilities and installation scripts, like the OpenCV installer or the KStars / INDI installation helper. It also offers some scripts to test the installed packages, to fix some troubles with dpkg or the DE, and even some utilities for those who like astronomy... Use them all!
 
 ## Index of scripts
-
 - pip-update
 - adv
 	- remove-apt-key
@@ -29,32 +28,34 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- network-scan
 	- ip
 - screen-off-with-delay
+- audio
+	- restart-pulseaudio
+	- equalizer
+	- load-pulseaudio-dbus
 - disks
 	- unmount
 	- to-mount
 	- automount
 	- mount-samba
-	- list
 	- power-off
 	- mount
-	- umount-samba
+	- unmount-samba
 - suspend
 - tree
 - remove
 - screen-off
 - processes
 	- autokill
-	- to-kill
 - beep
 - installers
 	- Stellarium
-	- tio-serial-terminal
 	- VirtualBox
 	- GitCola
 	- astropy
 	- PIL
 	- OpenCV
 	- nmap
+	- INDI
 	- Flash
 	- python-sh
 	- partial
@@ -78,8 +79,8 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- Luminance-HDR
 	- Kdenlive
 	- numpy-scipy
+	- tio-serial-terminal
 	- Samba
-	- KStars-indi
 	- gnome-keyring
 	- OpenVPN-GNOME-client
 	- phd2
@@ -92,8 +93,9 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- redshift-set
 	- indi-web
 	- redshift-dialog
+	- night-mode
 	- redshift-reset
 	- indi-backup
-		- bck
 		- restore-bck
+		- bck
 - pip-inst
