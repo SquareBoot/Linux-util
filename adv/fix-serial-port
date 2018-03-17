@@ -1,0 +1,10 @@
+#!/bin/bash
+port="$1"
+if [ -z "$port" ]; then
+    read -p "Please specify a serial port: " port
+fi
+echo "Adding user to dialout..."
+sudo usermod -a -G dialout $USER
+echo "Setting permissions to the port..."
+sudo chmod a+rw "$port"
+echo "Done."
