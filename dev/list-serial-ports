@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -1 /dev/ttyACM* /dev/ttyUSB* 2> /dev/null

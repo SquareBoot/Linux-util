@@ -1,0 +1,3 @@
+#!/bin/bash
+pgrep indi_ | xargs -L1 kill 2> /dev/null
+killall indiserver 2> /dev/null

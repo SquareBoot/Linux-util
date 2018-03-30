@@ -5,6 +5,7 @@ No description needed. This is a good collection of scrits for everyone who has 
 - pip-update
 - adv
 	- remove-apt-key
+	- fix-android-libstdc
 	- systemctl
 		- restore-rc-local
 	- fix-dpkg
@@ -20,11 +21,14 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- get-java-home
 	- get-cores-count
 	- fix-kde-sudo
+	- fix-serial-port
 - gui
 	- apply-GTK-theme-QT5
 - inst
 - update
 - net
+	- mount-samba
+	- unmount-samba
 	- network-scan
 	- ip
 - screen-off-with-delay
@@ -32,20 +36,26 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- restart-pulseaudio
 	- equalizer
 	- load-pulseaudio-dbus
-- disks
-	- unmount
-	- to-mount
-	- automount
-	- mount-samba
-	- power-off
-	- mount
-	- unmount-samba
 - suspend
 - tree
 - remove
+- dev
+	- list-tree
+	- rules-monitor
+	- disk
+		- unmount
+		- to-mount
+		- automount
+		- list
+		- power-off
+		- mount
+	- list-detailed
+	- list-serial-ports
+	- reload-udev-rules
 - screen-off
 - processes
 	- autokill
+	- to-kill
 - beep
 - installers
 	- Stellarium
@@ -68,8 +78,11 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- Spotify
 	- pip
 	- WineHQ
+	- serial-terminal
 	- tests
 		- OpenCV
+			- Cpp
+				- DisplayImage.cpp
 			- run
 		- PythonImagingLibrary.py
 	- PyQt4
@@ -79,7 +92,6 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- Luminance-HDR
 	- Kdenlive
 	- numpy-scipy
-	- tio-serial-terminal
 	- Samba
 	- gnome-keyring
 	- OpenVPN-GNOME-client
@@ -96,6 +108,7 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- night-mode
 	- redshift-reset
 	- indi-backup
-		- restore-bck
 		- bck
+		- restore-bck
+	- kill-indi
 - pip-inst

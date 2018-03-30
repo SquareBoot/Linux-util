@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo apt-get install lib64stdc++6:i386 mesa-utils
+cd $HOME/Android/Sdk/emulator/lib64
+mv libstdc++/ libstdc++.bak
+ln -s /usr/lib64/libstdc++.so.6  libstdc++
