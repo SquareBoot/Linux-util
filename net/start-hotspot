@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo nmcli device wifi hotspot con-name "$1" ssid "$1" band bg password "$2"

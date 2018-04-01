@@ -1,5 +1,5 @@
 # My Ubuntu / Debian scripts
-No description needed. This is a good collection of scrits for everyone who has just started using Ubuntu or simply wants some already-made utilities and installation scripts, like the OpenCV installer or the KStars / INDI installation helper. It also offers some scripts to test the installed packages, to fix some troubles with dpkg or the DE, and even some utilities for those who like astronomy... Use them all!
+No description needed. This is a good collection of scripts for everyone who has just started using Ubuntu or simply wants some already-made utilities and installation scripts, like the OpenCV installer or the KStars / INDI installation helper. It also offers some scripts to test the installed packages, to fix some troubles with dpkg or the DE, and even some utilities for those who like astronomy... Use them all!
 
 ## Index of scripts
 - pip-update
@@ -30,6 +30,8 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- unmount-samba
 	- network-scan
 	- ip
+	- start-hotspot
+	- stop-hotspot
 - screen-off-with-delay
 - audio
 	- restart-pulseaudio
