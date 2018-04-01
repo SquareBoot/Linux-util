@@ -21,7 +21,6 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- get-java-home
 	- get-cores-count
 	- fix-kde-sudo
-	- fix-serial-port
 - gui
 	- apply-GTK-theme-QT5
 - inst
@@ -52,6 +51,7 @@ No description needed. This is a good collection of scrits for everyone who has 
 	- list-detailed
 	- list-serial-ports
 	- reload-udev-rules
+	- fix-serial-port
 - screen-off
 - processes
 	- autokill
@@ -111,4 +111,5 @@ No description needed. This is a good collection of scrits for everyone who has 
 		- bck
 		- restore-bck
 	- kill-indi
+	- astromode
 - pip-inst

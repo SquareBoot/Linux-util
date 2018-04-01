@@ -1,0 +1,14 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+sudo apt update
+sudo apt-get dist-upgrade
+./redshift-reset > /dev/null 2> /dev/null
+../screen-off 2> /dev/null
+./kill-indi > /dev/null
+if [ ! -z "$(../dev/list-serial-ports)" ]; then
+    ../dev/list-serial-ports | xargs -L1 sudo chmod a+rw
+fi
+echo "Available serial ports:"
+../dev/list-serial-ports
+../beep
+./indi-web
