@@ -1,7 +1,5 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-sudo apt update
-sudo apt-get dist-upgrade
 ./redshift-reset > /dev/null 2> /dev/null
 ../screen-off 2> /dev/null
 ./kill-indi > /dev/null
