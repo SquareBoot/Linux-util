@@ -8,5 +8,4 @@ if [ ! -z "$(../dev/list-serial-ports)" ]; then
 fi
 echo "Available serial ports:"
 ../dev/list-serial-ports
-../beep
 ./indi-web
