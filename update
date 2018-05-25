@@ -1,5 +1,8 @@
 #!/bin/bash
 sudo apt update
 sudo apt-get dist-upgrade
+if [ -n "$(which flatpak)" ]; then
+    flatpak update
+fi
 echo "Cleaning..."
 sh $(dirname "$0")/clear

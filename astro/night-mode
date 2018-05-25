@@ -26,11 +26,11 @@ if [ -z "$intensity" ]; then
 fi
 echo "Setting color temperature... press Ctrl-C to close."
 if [ ! -z "$(which redshift-gtk)" ]; then
-    redshift-gtk -r -t "1600:$intensity" 2> /dev/null
+    redshift-gtk -l 12:42 -r -t "1600:$intensity" 2> /dev/null
 
 elif [ ! -z "$(which redshift)" ]; then
     echo "Using CLI (\"redshift-gtk\" not installed)."
-    redshift -r -t "1600:$intensity" 2> /dev/null
+    redshift -l 12:42 -r -t "1600:$intensity" 2> /dev/null
 
 else
     echo "Redshift not installed!"
