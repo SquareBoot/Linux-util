@@ -1,0 +1,3 @@
+#!/bin/bash
+sh $(dirname "$0")/play-pause
+sh $(dirname "$0")/../../screen-off-with-delay

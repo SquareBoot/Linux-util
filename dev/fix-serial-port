@@ -1,7 +1,7 @@
 #!/bin/bash
 port="$1"
 if [ -z "$port" ]; then
-    read -p "Please specify a serial port: " port
+    read -e -p "Please specify a serial port: " port
 fi
 echo "Adding user to dialout..."
 sudo usermod -a -G dialout $USER
