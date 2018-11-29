@@ -1,8 +1,14 @@
 #!/bin/bash
 sudo apt update
 sudo apt-get dist-upgrade
+if [ -n "$(which snap)" ]; then
+    sudo snap refresh
+fi
 if [ -n "$(which flatpak)" ]; then
     flatpak update
+fi
+if [ -n "$(which pip)" ]; then
+    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U --user
 fi
 echo "Cleaning..."
 sh $(dirname "$0")/clear

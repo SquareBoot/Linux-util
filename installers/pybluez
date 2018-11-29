@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo apt install python-pip python-dev libbluetooth-dev bluetooth bluez
+sudo -H pip install pybluez

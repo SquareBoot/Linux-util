@@ -2,4 +2,4 @@
 if [ -z "$(which flatpak)" ]; then
     sh $(dirname "$0")/Flatpak
 fi
-flatpak install https://flathub.org/repo/appstream/org.kde.kdenlive.flatpakref
+flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref

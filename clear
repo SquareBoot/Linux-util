@@ -2,3 +2,17 @@
 sudo apt-get autoremove
 sudo apt-get clean
 sudo apt-get autoclean
+#/etc/cron.daily/logrotate
+#echo 0 > /var/log/log_file_name
+#find /var/log -type f -name "*.gz" -delete
+#find /var/log/ -type f -mtime +180 -delete
+#
+#for CLEAN in $(find /var/log/ -type f)
+#do
+#    cp /dev/null  $CLEAN
+#done
+#for CLEAN in $(find /var/log/samba -type f)
+#do
+#    rm -rf $CLEAN
+#done
+#You could swap cp /dev/null $CLEAN by > $CLEAN

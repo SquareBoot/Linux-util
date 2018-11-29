@@ -1,0 +1,6 @@
+#!/bin/bash
+cat /sys/class/thermal/thermal_zone*/temp | {
+    while read line; do
+        echo "Core:" "$(($line / 1000))" "°C"
+    done
+}

@@ -1,7 +1,6 @@
 #!/bin/bash
-# Check if another night light is running
-if [ ! -z "$(which gsettings)" ]; then
-    if [ "gsettings get org.gnome.settings-daemon.plugins.color night-light-enabled" == "true" ]; then
+if [ -n "$(which gsettings)" ]; then
+    if [ "$(gsettings get org.gnome.settings-daemon.plugins.color night-light-enabled)" == "true" ]; then
         echo "Turning off the GNOME night light..."
         gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false 2> /dev/null
         # Wait for the GNOME night light to stop

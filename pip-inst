@@ -1,2 +1,5 @@
 #!/bin/bash
+if [ -z "$(which pip)" ]; then
+    sudo apt-get install python-pip
+fi
 pip install --user "$@"

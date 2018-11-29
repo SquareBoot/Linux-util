@@ -3,5 +3,5 @@ echo "Removing obsolete packages..."
 sudo apt-get purge flashplugin-installer pepperflashplugin-nonfree gnash gnash-common browser-plugin-gnash mozilla-plugin-gnash lightspark lightspark-common browser-plugin-lightspark swfdec-mozilla swfdec-gnome freshplayerplugin browser-plugin-freshplayer-pepperflash
 sudo apt-get autoremove
 echo "Installing Flash..."
-sudo apt-get install adobe-flashplugin
+sudo apt install adobe-flashplugin
 echo "Done."

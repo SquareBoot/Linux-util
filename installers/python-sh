@@ -1,3 +1,5 @@
 #!/bin/bash
-sudo apt-get install python-pip
+if [ -z "$(which pip)" ]; then
+    sudo apt-get install python-pip
+fi
 pip install --user sh

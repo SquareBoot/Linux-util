@@ -12,7 +12,7 @@ fi
 echo "============="
 
 echo "Installing dependencies..."
-sudo apt-get install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutls-dev
+sudo apt-get install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutls-dev libtiff-dev
 echo "============="
 
 echo "Preparing..."
@@ -46,7 +46,7 @@ read -p "Do you want to install all the 3rd party drivers? (y/n)?" DRIVERS
 if [ "$DRIVERS" = "y" ]; then
     cd ..
     echo "Installing dependencies..."
-    sudo apt-get install libftdi-dev libgps-dev libraw-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev libftdi1-dev libfftw3-dev
+    sudo apt-get install libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev fxload
     echo "============="
     
     echo "Preparing..."

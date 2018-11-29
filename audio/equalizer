@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "Starting DBus module..."
-sh $(dirname "$0")/load-pulseaudio-dbus > /dev/null
-qpaeq

@@ -2,4 +2,4 @@
 if [ -z "$(which snap)" ]; then
     sudo apt-get install snapd
 fi
-sudo snap install spotify
+sudo snap install gitkraken

@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -z "$(which flatpak)" ]; then
+    sh $(dirname "$0")/Flatpak
+fi
+sh $(dirname "$0")/partial/android-compiler-64bit
+flatpak install https://flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref

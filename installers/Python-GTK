@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo apt install python-gtk2 python-glade2

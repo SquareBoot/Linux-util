@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ -z "$(which snap)" ]; then
+    sudo apt install snapd
+fi
+sudo snap install intellij-idea-community

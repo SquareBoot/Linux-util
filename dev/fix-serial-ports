@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "List of serial ports:"
+ls -1 /dev/ttyACM* /dev/ttyUSB*
+echo "Fixing..."
+sudo usermod -a -G dialout $USER
+ls -1 /dev/ttyACM* /dev/ttyUSB* 2> /dev/null | xargs -L1 sudo chmod a+rw
