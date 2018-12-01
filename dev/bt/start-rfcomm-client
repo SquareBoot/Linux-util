@@ -12,6 +12,7 @@ if [[ -n "$2" ]]; then
 
 else
 if [[ -n "$1" ]]; then
+    channel=22
     address="$1"
 else
     echo "No channel and MAC address specified!"
@@ -19,7 +20,7 @@ else
 fi
 fi
 echo "Address=$address"
-sdptool add --channel=$channel SP
+sudo sdptool add --channel=$channel SP
 echo "Channel=$channel"
 file="/dev/rfcomm"
 i=0
