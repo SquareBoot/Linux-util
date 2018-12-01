@@ -1,0 +1,24 @@
+#!/bin/bash
+trap ctrl_c INT
+
+function ctrl_c() {
+    echo "Exiting..."
+    sudo rm "/dev/$file"
+}
+
+sudo /etc/init.d/bluetooth start
+channel="$1"
+if [[ -z "$channel" ]]; then
+    channel=22
+fi
+sudo sdptool add --channel=$channel SP > /dev/null
+echo "Channel=$channel"
+file="rfcomm"
+i=0
+while [[ -e "/dev/${file}$i" ]] ; do
+    let i++
+done
+file="${file}$i"
+sudo mknod -m 666 "/dev/$file" c 216 0
+echo "SerialPort=/dev/$file"
+rfcomm watch "/dev/$file" "$channel" /sbin/agetty "$file" 115200 linux

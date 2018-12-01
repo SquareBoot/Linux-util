@@ -1,0 +1,2 @@
+#!/bin/bash
+hciconfig | grep Address | awk '{print $3}'

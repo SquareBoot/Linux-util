@@ -1,0 +1,31 @@
+#!/bin/bash
+trap ctrl_c INT
+
+function ctrl_c() {
+    echo "Exiting..."
+}
+
+sudo /etc/init.d/bluetooth start
+if [[ -n "$2" ]]; then
+    channel="$1"
+    address="$2"
+
+else
+if [[ -n "$1" ]]; then
+    address="$1"
+else
+    echo "No channel and MAC address specified!"
+    exit 4
+fi
+fi
+echo "Address=$address"
+sdptool add --channel=$channel SP
+echo "Channel=$channel"
+file="/dev/rfcomm"
+i=0
+while [[ -e "${file}$i" ]] ; do
+    let i++
+done
+file="${file}$i"
+echo "SerialPort=$file"
+rfcomm connect $file $address $channel
