@@ -28,5 +28,6 @@ while [[ -e "${file}$i" ]] ; do
     let i++
 done
 file="${file}$i"
+sudo mknod -m 666 "$file" c 216 0
 echo "SerialPort=$file"
 rfcomm connect $file $address $channel
