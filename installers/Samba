@@ -1,20 +1,2 @@
 #!/bin/bash
-option=$1
-if [ -z "$option" ]; then
-    echo "Which packages do you want to install?"
-    echo "1. Samba sharing"
-    echo "2. Mounting utility (cifs-utils)"
-    echo "3. Both"
-    echo
-    read -p "Please select an option: " option
-fi
-
-if [ "$option" == "1" ]; then
-    sudo apt-get install samba
-    
-elif [ "$option" == "2" ]; then
-    sudo apt-get install cifs-utils
-    
-else
-    sudo apt-get install samba cifs-utils
-fi
+sudo apt-get install samba cifs-utils gnome-user-share

@@ -32,7 +32,7 @@ def main():
         global username
         signal.signal(signal.SIGINT, signal_handler)
         username = sys.argv[1]
-        print("Username = " + hotspotpswd)
+        print("Username = " + username)
         netinterface = sys.argv[2]
         print("NetworkInterface = \"" + netinterface + "\"")
         hotspotssid = sys.argv[3]
