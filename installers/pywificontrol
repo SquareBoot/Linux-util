@@ -1,0 +1,44 @@
+#!/bin/bash
+if [[ -z "$1" ]]; then
+  sudo apt install dbus libdbus-glib-1-dev libdbus-1-dev python-dbus python-pip rfkill hostapd wpasupplicant
+  pip install netifaces
+  mkdir /tmp/pywificontrol-installer
+  cd /tmp/pywificontrol-installer
+  git clone https://github.com/emlid/systemd-manager.git
+  cd systemd-manager
+  sudo python setup.py install
+  cd ..
+  git clone https://github.com/emlid/pywificontrol.git
+  cd pywificontrol
+  sudo python setup.py install
+  cd ..
+  sudo rm -f -r systemd-manager
+  sudo rm -f -r pywificontrol
+  cd ..
+  rmdir pywificontrol-installer
+else
+  sudo apt autoremove --purge libdbus-glib-1-dev hostapd
+  pip uninstall netifaces
+  mkdir /tmp/pywificontrol-installer
+  cd /tmp/pywificontrol-installer
+  git clone https://github.com/emlid/systemd-manager.git
+  cd systemd-manager
+  sudo python setup.py install --record files.txt
+  echo "=== Removing ==="
+  cat files.txt
+  cat files.txt | xargs sudo rm -rf
+  rm -f files.txt
+  cd ..
+  git clone https://github.com/emlid/pywificontrol.git
+  cd pywificontrol
+  sudo python setup.py install --record files.txt
+  echo "=== Removing ==="
+  cat files.txt
+  cat files.txt | xargs sudo rm -rf
+  rm -f files.txt
+  cd ..
+  sudo rm -f -r systemd-manager
+  sudo rm -f -r pywificontrol
+  cd ..
+  rmdir pywificontrol-installer
+fi

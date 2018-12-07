@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo iwlist scan 2>/dev/null | grep "ESSID:" | sed "s/ESSID://g" | sed "s/ //g" | sed "s/\"//g" | awk '{print $1}'

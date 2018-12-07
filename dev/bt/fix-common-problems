@@ -1,8 +1,13 @@
 #!/bin/bash
-sudo apt install -y libbluetooth-dev bluetooth bluez
+cd "$(dirname "$0")"
+./off
+sudo apt install -y libbluetooth-dev bluetooth bluez rfkill
 sudo sed -i 's#ExecStart=/usr/lib/bluetooth/bluetoothd#ExecStart=/usr/lib/bluetooth/bluetoothd -C#g' /etc/systemd/system/dbus-org.bluez.service
 sudo sed -i 's#AutoEnable=false#AutoEnable=true#g' /etc/bluetooth/main.conf
+sudo rm /dev/rfcomm* 2> /dev/null
 sudo systemctl daemon-reload
 sudo service bluetooth restart
+./off
+sleep 1
+./on
 sudo sdptool add SP
-
