@@ -13,6 +13,7 @@ ap = None
 netscan = None
 indiweb = None
 username = None
+DEBUG = True
 
 
 def main():
@@ -90,57 +91,61 @@ def parse_rfcomm(line):
     """
     Parses the command received from the client and executes it.
     """
-    global typepswd
-    global ap
-    global selectnet
-    global netscan
-    if typepswd is True:
-        log("Connecting...")
-        try:
-            log(str(nmcli("device", "wifi", "connect", ap, "password", line))
-                .replace("\n", ""))
-        except ErrorReturnCode:
-            log("Error!")
-            print_cmds()
-        typepswd = False
-        print_cmds()
+    global DEBUG
+    if DEBUG:
+        print(line)
     else:
-        if len(line) == 1:
-            cmdchar = line[0]
-            if selectnet:
-                index = ord(cmdchar) - 97
-                if 0 <= index < len(netscan):
-                    ap = str(netscan[index].ssid)
-                    connect(ap)
-                else:
-                    log("Invalid selected network!")
+        global typepswd
+        global ap
+        global selectnet
+        global netscan
+        if typepswd is True:
+            log("Connecting...")
+            try:
+                log(str(nmcli("device", "wifi", "connect", ap,
+                              "password", line)).replace("\n", ""))
+            except ErrorReturnCode:
+                log("Error!")
+                print_cmds()
+            typepswd = False
+            print_cmds()
+        else:
+            if len(line) == 1:
+                cmdchar = line[0]
+                if selectnet:
+                    index = ord(cmdchar) - 97
+                    if 0 <= index < len(netscan):
+                        ap = str(netscan[index].ssid)
+                        connect(ap)
+                    else:
+                        log("Invalid selected network!")
+                        print_cmds()
+                    selectnet = False
+                elif cmdchar == '1':
+                    log("Starting hotspot...")
+                    start_hotspot()
                     print_cmds()
-                selectnet = False
-            elif cmdchar == '1':
-                log("Starting hotspot...")
-                start_hotspot()
-                print_cmds()
-            elif cmdchar == '2':
-                log("Turning off hotspot...")
-                stop_hotspot()
-                print_cmds()
-            elif cmdchar == '3':
-                log("Network scan...")
-                netdiscovery()
-            elif cmdchar == '4':
-                indiweb_start()
-            elif cmdchar == '5':
-                log("Shutdown!")
-                shutdown("now")
-            elif cmdchar == '6':
-                log("Reboot!")
-                reboot("now")
+                elif cmdchar == '2':
+                    log("Turning off hotspot...")
+                    stop_hotspot()
+                    print_cmds()
+                elif cmdchar == '3':
+                    log("Network scan...")
+                    netdiscovery()
+                elif cmdchar == '4':
+                    indiweb_start()
+                elif cmdchar == '5':
+                    log("Shutdown!")
+                    shutdown("now")
+                elif cmdchar == '6':
+                    log("Reboot!")
+                    reboot("now")
+                else:
+                    log("Invalid command!")
+                    print_cmds()
             else:
                 log("Invalid command!")
                 print_cmds()
-        else:
-            log("Invalid command!")
-            print_cmds()
 
 
 def signal_handler(sig, frame):
