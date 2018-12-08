@@ -14,7 +14,7 @@ netscan = None
 indiweb = None
 username = None
 DEBUG = False
-advertise = True
+advertise = False
 
 
 def main():
