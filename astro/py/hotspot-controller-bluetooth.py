@@ -14,6 +14,7 @@ netscan = None
 indiweb = None
 username = None
 DEBUG = True
+advertise = False
 
 
 def main():
@@ -31,6 +32,7 @@ def main():
         global server_sock
         global client_sock
         global username
+        global advertise
         signal.signal(signal.SIGINT, signal_handler)
         username = sys.argv[1]
         print("Username = " + username)
@@ -46,12 +48,13 @@ def main():
         server_sock.listen(1)
         port = server_sock.getsockname()[1]
         uuid = "b9029ed0-6d6a-4ff6-b318-215067a6d8b1"
-        advertise_service(server_sock, "PiBTControl",
-                          service_id=uuid,
-                          service_classes=[uuid, SERIAL_PORT_CLASS],
-                          profiles=[SERIAL_PORT_PROFILE],
-                          #                   protocols = [ OBEX_UUID ]
-                          )
+        if advertise:
+            advertise_service(server_sock, "PiBTControl",
+                              service_id=uuid,
+                              service_classes=[uuid, SERIAL_PORT_CLASS],
+                              profiles=[SERIAL_PORT_PROFILE],
+                              #                   protocols = [ OBEX_UUID ]
+                              )
         while True:
             print("Waiting for connection on RFCOMM channel %d" % port)
             client_sock, client_info = server_sock.accept()
