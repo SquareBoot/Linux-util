@@ -13,8 +13,8 @@ ap = None
 netscan = None
 indiweb = None
 username = None
-DEBUG = True
-advertise = False
+DEBUG = False
+advertise = True
 
 
 def main():
