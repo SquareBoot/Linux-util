@@ -1,0 +1,6 @@
+#!/bin/bash
+out="$(ping -c 1 "$1")"
+if [[ "%(echo $?)" != 0 ]]; then
+    echo "$out" | grep PING | awk '{print $3}' | sed 's/(//g' | sed 's/)//g'
+fi
+
