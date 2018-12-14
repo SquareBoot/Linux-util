@@ -24,5 +24,5 @@ if [[ -n "$interface" ]]; then
   ../dev/bt/on
   sudo sdptool add SP
   echo "MAC address of this computer: $(../dev/bt/get-MAC)"
-  sudo python py/hotspot-controller-bluetooth.py "$USER" "$interface" "$(awk '{print $2}' hotspot_config)" "$(awk '{print $3}' hotspot_config)"
+  sudo python py/bluetooth-net-controller.py "$USER" "$interface" "$(awk '{print $2}' hotspot_config)" "$(awk '{print $3}' hotspot_config)"
 fi
