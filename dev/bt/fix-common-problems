@@ -6,7 +6,7 @@ sudo sed -i ':a;N;$!ba;s#ExecStart=/usr/lib/bluetooth/bluetoothd\n#ExecStart=/us
 sudo cp /lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.service
 sudo sed -i ':a;N;$!ba;s#ExecStart=/usr/lib/bluetooth/bluetoothd\n#ExecStart=/usr/lib/bluetooth/bluetoothd -C\nExecStartPost=/usr/bin/sdptool add SP\n#g' /etc/systemd/system/bluetooth.service
 if grep -q "DisablePlugins = pnat" "/etc/bluetooth/main.conf"; then
-  sudo echo "DisablePlugins = pnat" >> "/etc/bluetooth/main.conf"
+  echo "DisablePlugins = pnat" | sudo tee -a "/etc/bluetooth/main.conf"
 fi
 sudo sed -i 's#AutoEnable=false#AutoEnable=true#g' /etc/bluetooth/main.conf
 sudo rm /dev/rfcomm* 2> /dev/null
