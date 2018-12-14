@@ -10,8 +10,13 @@ if [[ -z "$(grep "DisablePlugins = pnat" "/etc/bluetooth/main.conf")" ]]; then
 fi
 sudo sed -i 's#AutoEnable=false#AutoEnable=true#g' /etc/bluetooth/main.conf
 sudo rm /dev/rfcomm* 2> /dev/null
+sudo cp var-run-sdp.path /etc/systemd/system/var-run-sdp.path
+sudo cp var-run-sdp.service /etc/systemd/system/var-run-sdp.service
 sudo systemctl daemon-reload
 sudo service bluetooth restart
+sudo systemctl enable var-run-sdp.path
+sudo systemctl enable var-run-sdp.service
+sudo systemctl start var-run-sdp.path
 ./off
 sleep 1
 ./on
