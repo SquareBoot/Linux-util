@@ -1,9 +1,8 @@
 #!/bin/bash
 sudo apt-add-repository ppa:mutlaqja/ppa
 sudo apt update
-
-option=$1
-if [ -z "$option" ]; then
+option="$2"
+if [[ -z "$option" ]]; then
     echo "Which packages do you want to install?"
     echo "0. INDI"
     echo "1. INDI + Web Manager"
@@ -18,41 +17,40 @@ if [ -z "$option" ]; then
     echo
     read -p "Please select an option: " option
 fi
-
 sudo adduser $USER dialout
-if [ "$option" == "0" ]; then
+if [[ "$option" == "0" ]]; then
     sudo apt install indi-full
     
-elif [ "$option" == "1" ]; then
+elif [[ "$option" == "1" ]]; then
     sudo apt install indi-full python-pip
     sudo -H pip install indiweb
     
-elif [ "$option" == "2" ]; then
+elif [[ "$option" == "2" ]]; then
     sudo apt install indi-full astrometry.net
     
-elif [ "$option" == "3" ]; then
+elif [[ "$option" == "3" ]]; then
     sudo apt install indi-full astrometry.net python-pip
     sudo -H pip install indiweb
     
-elif [ "$option" == "4" ]; then
+elif [[ "$option" == "4" ]]; then
     sudo apt install indi-full astrometry.net python-pip gsc
     sudo -H pip install indiweb
 
-elif [ "$option" == "5" ]; then
+elif [[ "$option" == "5" ]]; then
     sudo apt install kstars-bleeding indi-full
     
-elif [ "$option" == "6" ]; then
+elif [[ "$option" == "6" ]]; then
     sudo apt install kstars-bleeding indi-full python-pip
     sudo -H pip install indiweb
     
-elif [ "$option" == "7" ]; then
+elif [[ "$option" == "7" ]]; then
     sudo apt install kstars-bleeding indi-full astrometry.net
     
-elif [ "$option" == "8" ]; then
+elif [[ "$option" == "8" ]]; then
     sudo apt install kstars-bleeding indi-full astrometry.net python-pip
     sudo -H pip install indiweb
     
-elif [ "$option" == "9" ]; then
+elif [[ "$option" == "9" ]]; then
     sudo apt install kstars-bleeding indi-full astrometry.net python-pip gsc
     sudo -H pip install indiweb
 fi

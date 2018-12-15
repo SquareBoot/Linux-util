@@ -1,6 +1,0 @@
-#!/bin/bash
-cp $HOME/.config/kstarsrc $(dirname "$0")/settings
-rm -r $(dirname "$0")/indiConfig 2> /dev/null
-cp -r $HOME/.indi $(dirname "$0")/indiConfig
-rm -r $(dirname "$0")/kstarsData 2> /dev/null
-cp -r $HOME/.local/share/kstars $(dirname "$0")/kstarsData

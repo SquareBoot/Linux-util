@@ -1,3 +1,0 @@
-#!/bin/bash
-sudo systemctl start bluetooth.service
-sudo rfkill unblock bluetooth
