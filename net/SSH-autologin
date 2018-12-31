@@ -1,0 +1,4 @@
+#!/bin/bash
+yes "$(echo)" | ssh-keygen -t rsa
+ssh "$1" mkdir -p .ssh
+cat .ssh/id_rsa.pub | ssh "$1" 'cat >> .ssh/authorized_keys'

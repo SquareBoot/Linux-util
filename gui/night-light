@@ -1,0 +1,35 @@
+#!/bin/bash
+trap close INT
+
+function close() {
+    echo "Interrupted."
+    exit 0
+}
+
+if [[ -n "$(which gsettings)" ]]; then
+    if [[ "$(gsettings get org.gnome.settings-daemon.plugins.color night-light-enabled)" == "true" ]]; then
+        echo "Turning off the GNOME night light..."
+        gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false 2> /dev/null
+        # Wait for the GNOME night light to stop
+        sleep 0.5
+    fi
+fi
+if [[ ! -z "$(pgrep redshift)" ]]; then
+    echo "Running redshift found."
+    read -p "Please turn it off and press enter."
+fi
+intensity="$1"
+if [[ -z "$intensity" ]]; then
+    read -p "Please write the temperature (recommended 1000 → 1600): " intensity
+fi
+echo "Setting color temperature... press Ctrl-C to close."
+if [[ -n "$(which redshift-gtk)" ]]; then
+    redshift-gtk -l 12:42 -r -t "1600:$intensity" 2> /dev/null
+
+elif [[ -n "$(which redshift)" ]]; then
+    echo "Using CLI (\"redshift-gtk\" not installed)."
+    redshift -l 12:42 -r -t "1600:$intensity" 2> /dev/null
+
+else
+    echo "Redshift not installed!"
+fi

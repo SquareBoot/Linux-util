@@ -1,80 +1,69 @@
 #!/bin/bash
-d=$1
-if [ -z $d ]; then
-    read -e -p "Please specify the INDI source folder (leave empty to use $\"(pwd)\"): " d
+d="$1"
+if [[ -z "$d" ]]; then
+    read -e -p "Please specify the INDI source folder (leave empty to use \"$(pwd)\"): " d
 fi
-if [ -z $d ]; then
-    echo "Working in: " $(pwd)
-else 
+if [[ -z "$d" ]]; then
+    echo "Working in: $(pwd)"
+else
     cd $d
-    echo "Working in: " $d
+    echo "Working in: $d"
 fi
-echo "============="
 
-echo "Installing dependencies..."
-sudo apt-get install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutls-dev libtiff-dev
-echo "============="
+echo "============= Installing dependencies ============="
+sudo apt-get install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential \
+cmake git libjpeg-dev libcurl4-gnutls-dev libtiff-dev
 
-echo "Preparing..."
-if [ -d "build" ]; then
+echo "============= Preparing ============="
+if [[ -d "build" ]]; then
     echo "Build directory found."
     read -p "Remove it (y/n)?" CONT
-    if [ "$CONT" = "y" ]; then
+    if [[ "$CONT" = "y" ]]; then
         rm -r build
     fi
 fi
 mkdir -p build/libindi
 cd build/libindi
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ../../libindi
-echo "============="
-
-echo "Building..."
+echo "============= Building ============="
 read -p "Do you want to build INDI using $(nproc) jobs (faster) instead of one? (y/n)?" MJOB
-if [ "$MJOB" = "y" ]; then
+if [[ "$MJOB" = "y" ]]; then
     make -j$(nproc)
-    
 else
     make
 fi
-echo "============="
 
-echo "Installing..."
+echo "============= Installing ============="
 sudo make install
-echo "============="
 
 read -p "Do you want to install all the 3rd party drivers? (y/n)?" DRIVERS
-if [ "$DRIVERS" = "y" ]; then
+if [[ "$DRIVERS" = "y" ]]; then
     cd ..
-    echo "Installing dependencies..."
-    sudo apt-get install libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev fxload
-    echo "============="
-    
-    echo "Preparing..."
+    echo "============= Installing dependencies ============="
+    sudo apt-get install libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev \
+    libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libfftw3-dev fxload
+    echo "============= Preparing ============="
     mkdir 3rdparty
     cd 3rdparty
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ../../3rdparty
-    echo "============="
-    
-    echo "Building (1/2)..."
-    if [ "$MJOB" = "y" ]; then
+    echo "============= Building (1/2) ============="
+    if [[ "$MJOB" = "y" ]]; then
         make -j$(nproc)
-        echo "Installing (1/2)..."
+        echo "============= Installing (1/2) ============="
         sudo make install
-        echo "Building (2/2)..."
+        echo "============= Building (2/2) ============="
         cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ../../3rdparty
         make -j$(nproc)
-    
+
     else
         make
-        echo "Installing (1/2)..."
+        echo "============= Installing (1/2) ============="
         sudo make install
-        echo "Building (2/2)..."
+        echo "============= Building (2/2) ============="
         cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ../../3rdparty
         make
     fi
-    echo "Installing (2/2)..."
-    sudo make install    
+    echo "============= Installing (2/2) ============="
+    sudo make install
 fi
-echo "============="
-
 echo "Done."

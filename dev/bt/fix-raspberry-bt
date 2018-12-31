@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-./off
-sudo apt install -y libbluetooth-dev bluetooth bluez rfkill
+sudo rfkill block bluetooth
+sudo systemctl stop bluetooth
 sudo sed -i ':a;N;$!ba;s#ExecStart=/usr/lib/bluetooth/bluetoothd\n#ExecStart=/usr/lib/bluetooth/bluetoothd -C\nExecStartPost=/usr/bin/sdptool add SP\n#g' /etc/systemd/system/dbus-org.bluez.service
 sudo cp /lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.service
 sudo sed -i ':a;N;$!ba;s#ExecStart=/usr/lib/bluetooth/bluetoothd\n#ExecStart=/usr/lib/bluetooth/bluetoothd -C\nExecStartPost=/usr/bin/sdptool add SP\n#g' /etc/systemd/system/bluetooth.service
@@ -9,17 +9,15 @@ if [[ -z "$(grep "DisablePlugins = pnat" "/etc/bluetooth/main.conf")" ]]; then
   echo "DisablePlugins = pnat" | sudo tee -a "/etc/bluetooth/main.conf"
 fi
 sudo sed -i 's#AutoEnable=false#AutoEnable=true#g' /etc/bluetooth/main.conf
-sudo usermod -aG bluetooth $USER
+sudo usermod -aG bluetooth "$USER"
 newgrp bluetooth
-sudo rm /dev/rfcomm* 2> /dev/null
 sudo cp var-run-sdp.path /etc/systemd/system/var-run-sdp.path
 sudo cp var-run-sdp.service /etc/systemd/system/var-run-sdp.service
 sudo systemctl daemon-reload
-sudo service bluetooth restart
+sudo systemctl enable bluetooth
 sudo systemctl enable var-run-sdp.path
 sudo systemctl enable var-run-sdp.service
 sudo systemctl start var-run-sdp.path
-./off
-sleep 1
-./on
+sudo systemctl start bluetooth
+sudo rfkill unblock bluetooth
 sudo sdptool add SP

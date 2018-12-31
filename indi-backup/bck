@@ -1,0 +1,8 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+cp $HOME/.config/kstarsrc ./kstarsrc
+cp $HOME/.config/kstars.kmessagebox ./kstars.kmessagebox
+rm -r ./indiConfig 2> /dev/null
+cp -r $HOME/.indi ./indiConfig
+rm -r ./kstarsData 2> /dev/null
+cp -r $HOME/.local/share/kstars ./kstarsData
