@@ -1,0 +1,35 @@
+#!/bin/bash
+trap ctrl_c INT
+
+function ctrl_c() {
+    nohup notify-send --urgency=low -i terminal "Spotify" "Anti-Ad stopped" &
+    exit 0
+}
+
+while read -r pid; do
+    if [ -n "$pid" -a "$pid" != "$$" ]; then
+        kill "$pid"
+        notify-send --urgency=low -i terminal "Spotify" "Anti-Ad stopped"
+        exit 0
+    fi
+done <<< "$(pgrep anti-ad)"
+
+
+if [ -z "$(pgrep spotify)" ]; then
+    nohup spotify &
+fi
+notify-send --urgency=low -i terminal "Spotify" "Anti-Ad started"
+while true; do
+    if [ -n "$(dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata' | grep "string \"https://open.spotify.com/ad/")" ]; then
+        if [ -n "$(pgrep spotify)" ]; then
+            killall spotify
+            sleep 0.5
+            killall spotify
+            sleep 0.7
+        fi
+        sleep 2 && dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause &
+        nohup spotify &
+        nohup sleep 0.5 && xdotool search --onlyvisible --classname --sync spotify windowminimize &
+    fi
+    sleep 3
+done

@@ -1,0 +1,2 @@
+#!/bin/bash
+stress --cpu "$(nproc)" --io 4 --vm 4 --vm-bytes 1024M

@@ -1,0 +1,2 @@
+#!/bin/bash
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="%2" -c .setpdfwrite -f -r300 -dSAFER "$2"

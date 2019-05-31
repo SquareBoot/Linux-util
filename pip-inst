@@ -1,5 +1,5 @@
 #!/bin/bash
 if [ -z "$(which pip)" ]; then
-    sudo apt-get install python-pip
+    sudo apt-get install python3-pip
 fi
-pip install --user "$@"
+pip3 install --user "$@"

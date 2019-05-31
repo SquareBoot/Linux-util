@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt-get install python-astropy
+sudo apt install python-astropy

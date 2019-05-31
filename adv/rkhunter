@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo rkhunter -c --skip-keypress
+sudo cat /var/log/rkhunter.log > rkhunter-output.log

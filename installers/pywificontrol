@@ -1,7 +1,7 @@
 #!/bin/bash
 if [[ -z "$1" ]]; then
-  sudo apt install dbus libdbus-glib-1-dev libdbus-1-dev python-dbus python-pip rfkill hostapd wpasupplicant
-  pip install netifaces
+  sudo apt install dbus libdbus-glib-1-dev libdbus-1-dev python-dbus python3-pip rfkill hostapd wpasupplicant
+  pip3 install netifaces
   mkdir /tmp/pywificontrol-installer
   cd /tmp/pywificontrol-installer
   git clone https://github.com/emlid/systemd-manager.git
@@ -18,7 +18,7 @@ if [[ -z "$1" ]]; then
   rmdir pywificontrol-installer
 else
   sudo apt autoremove --purge libdbus-glib-1-dev hostapd
-  pip uninstall netifaces
+  pip3 uninstall netifaces
   mkdir /tmp/pywificontrol-installer
   cd /tmp/pywificontrol-installer
   git clone https://github.com/emlid/systemd-manager.git

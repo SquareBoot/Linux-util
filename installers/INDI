@@ -29,28 +29,28 @@ elif [[ "$option" == "2" ]]; then
     sudo apt install indi-full astrometry.net
     
 elif [[ "$option" == "3" ]]; then
-    sudo apt install indi-full astrometry.net python-pip
+    sudo apt install indi-full astrometry.net python3-pip
     sudo -H pip install indiweb
     
 elif [[ "$option" == "4" ]]; then
-    sudo apt install indi-full astrometry.net python-pip gsc
+    sudo apt install indi-full astrometry.net python3-pip gsc
     sudo -H pip install indiweb
 
 elif [[ "$option" == "5" ]]; then
     sudo apt install kstars-bleeding indi-full
     
 elif [[ "$option" == "6" ]]; then
-    sudo apt install kstars-bleeding indi-full python-pip
+    sudo apt install kstars-bleeding indi-full python3-pip
     sudo -H pip install indiweb
     
 elif [[ "$option" == "7" ]]; then
     sudo apt install kstars-bleeding indi-full astrometry.net
     
 elif [[ "$option" == "8" ]]; then
-    sudo apt install kstars-bleeding indi-full astrometry.net python-pip
+    sudo apt install kstars-bleeding indi-full astrometry.net python3-pip
     sudo -H pip install indiweb
     
 elif [[ "$option" == "9" ]]; then
     sudo apt install kstars-bleeding indi-full astrometry.net python-pip gsc
-    sudo -H pip install indiweb
+    sudo -H pip3 install indiweb
 fi

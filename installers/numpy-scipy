@@ -13,10 +13,10 @@ if [ "$option" == "1" ]; then
     sudo apt-get install python-numpy python-scipy
     
 elif [ "$option" == "2" ]; then
-    sudo apt-get install python-pip
-    pip install --user numpy scipy
+    sudo apt-get install python3-pip
+    pip3 install --user numpy scipy
     
 else
-    sudo apt-get install python-pip python-numpy python-scipy
-    pip install --user numpy scipy
+    sudo apt-get install python3-pip python-numpy python-scipy
+    pip3 install --user numpy scipy
 fi
